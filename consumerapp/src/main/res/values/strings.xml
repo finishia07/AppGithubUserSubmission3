@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">ConsumerApp</string>
+    <string name="users_username">User Name</string>
+    <string name="users_name">Name</string>
+    <string name="tab_text_1">Followers</string>
+    <string name="tab_text_2">Following</string>
+    <string name="content_tab_text"> This is tab</string>
+    <string name="cekcek"> hallooooo test test</string>
+    <string name="followers_1000">Followers(1000)</string>
+    <string name="following_1000">Following(100)</string>
+    <string name="repositories_1000">Repositories(100)</string>
+    <string name="name">name</string>
+    <string name="followerList">Follower List</string>
+    <string name="nothing">Tidak Ada</string>
+</resources>

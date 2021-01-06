@@ -1,0 +1,74 @@
+<html>
+<head>
+<title>ListGitsAdapter.kt</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+ListGitsAdapter.kt</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com.finishia.appgithubusersubmission3.adapter</span>
+
+<span class="s1">import android.view.LayoutInflater</span>
+<span class="s1">import android.view.View</span>
+<span class="s1">import android.view.ViewGroup</span>
+<span class="s1">import androidx.recyclerview.widget.RecyclerView</span>
+<span class="s1">import com.bumptech.glide.Glide</span>
+<span class="s1">import com.finishia.appgithubusersubmission3.R</span>
+<span class="s1">import com.finishia.appgithubusersubmission3.entity.Gits</span>
+<span class="s1">import kotlinx.android.synthetic.main.activity_detail_github.view.*</span>
+
+<span class="s0">class </span><span class="s1">ListGitsAdapter(private </span><span class="s0">val </span><span class="s1">listGits: ArrayList&lt;Gits&gt;): RecyclerView.Adapter&lt;ListGitsAdapter.ListViewHolder&gt;() {</span>
+
+    <span class="s1">companion </span><span class="s0">object </span><span class="s1">{</span>
+        <span class="s1">private lateinit </span><span class="s0">var </span><span class="s1">onItemClickCallback: OnItemClickCallback</span>
+    <span class="s1">}</span>
+
+    <span class="s0">fun </span><span class="s1">setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {</span>
+        <span class="s1">Companion.onItemClickCallback = onItemClickCallback</span>
+    <span class="s1">}</span>
+
+    <span class="s1">override </span><span class="s0">fun </span><span class="s1">onCreateViewHolder(viewGroup: ViewGroup</span><span class="s0">, </span><span class="s1">i: Int): ListViewHolder {</span>
+        <span class="s0">val </span><span class="s1">view: View = LayoutInflater.from(viewGroup.context).inflate(R.layout.item_row_gits</span><span class="s0">, </span><span class="s1">viewGroup</span><span class="s0">, false</span><span class="s1">)</span>
+        <span class="s0">return </span><span class="s1">ListViewHolder(view)</span>
+    <span class="s1">}</span>
+
+    <span class="s1">override </span><span class="s0">fun </span><span class="s1">onBindViewHolder(holder: ListViewHolder</span><span class="s0">, </span><span class="s1">position: Int) {</span>
+        <span class="s1">holder.bind(listGits[position])</span>
+        <span class="s1">holder.itemView.setOnClickListener() {</span>
+            <span class="s1">onItemClickCallback.onItemClicked(listGits[holder.adapterPosition])</span>
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+
+    <span class="s1">override </span><span class="s0">fun </span><span class="s1">getItemCount(): Int= listGits.size</span>
+
+    <span class="s1">inner </span><span class="s0">class </span><span class="s1">ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {</span>
+        <span class="s0">fun </span><span class="s1">bind(gits: Gits) {</span>
+            <span class="s1">with(itemView) {</span>
+
+                <span class="s1">tv_item_name.text = gits.name</span>
+                <span class="s1">tv_item_userName.text = gits.username</span>
+                <span class="s1">Glide.with(</span><span class="s0">this</span><span class="s1">)</span>
+                    <span class="s1">.load(gits.avatar)</span>
+                    <span class="s1">.into(img_item_photo)</span>
+                <span class="s1">tv_item_repository.text = gits.repository.toString()</span>
+                <span class="s1">tv_item_follower.text = gits.follower.toString()</span>
+                <span class="s1">tv_item_following.text = gits.following.toString()</span>
+                <span class="s1">tv_item_company.text = gits.company</span>
+                <span class="s1">tv_item_location.text = gits.location</span>
+            <span class="s1">}</span>
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+
+    <span class="s0">interface </span><span class="s1">OnItemClickCallback {</span>
+        <span class="s0">fun </span><span class="s1">onItemClicked(data: Gits)</span>
+    <span class="s1">}</span>
+<span class="s1">}</span></pre>
+</body>
+</html>
